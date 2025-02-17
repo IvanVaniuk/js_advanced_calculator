@@ -8,7 +8,9 @@ function makeCalculator() {
     result: 0,
 
     operate(operation, value) {
-      operation(value);
+      if (typeof operation === 'function') {
+        operation(value);
+      }
 
       return this;
     },
@@ -26,7 +28,9 @@ function makeCalculator() {
     },
 
     divide(value) {
-      obj.result /= value;
+      if (value !== 0) {
+        obj.result /= value;
+      }
     },
 
     reset() {
